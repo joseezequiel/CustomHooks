@@ -1,0 +1,56 @@
+import { useForm } from "../hooks/useForm"
+
+export const FormsApp = () => {
+    const initialForm = {
+        username: '',
+        email: '',
+        password: ''
+    }
+    const {username, email, password, onInputChange} = useForm(initialForm)
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(username, email, password)
+    }
+
+    return (
+        <>
+            <form onSubmit={handleSubmit}> 
+                <div className="form-group">
+                    <label htmlFor="userName">Username </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="username"
+                        name = "username"
+                        value = {username}
+                        onChange = {onInputChange}
+                        />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email" 
+                        name = "email"
+                        value = {email}
+                        onChange = {onInputChange}
+                        />  
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password" 
+                        name = "password"
+                        value = {password}
+                        onChange = {onInputChange}
+                        />     
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+        </>
+    )
+}
